@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Duolingo-style Interface</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: white;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: #afafaf;
+            font-size: 24px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .chat-container {
+            margin-top: 40px;
+        }
+
+        .mascot-message {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+
+        .mascot-img {
+            width: 70px;
+            height: 70px;
+            margin-right: 15px;
+        }
+
+        .message-bubble {
+            background-color: white;
+            padding: 15px 20px;
+            border-radius: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+            color: #4b4b4b;
+        }
+
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .option {
+            padding: 20px;
+            border-radius: 15px;
+            border: 2px solid #e5e5e5;
+            background-color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: all 0.2s ease;
+        }
+
+        .option:hover {
+            background-color: #f7f7f7;
+        }
+
+        .option.selected {
+            background-color: #e5f6ff;
+            border-color: #84d8ff;
+        }
+
+        .option-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 15px;
+            opacity: 0.6;
+        }
+
+        .option-text {
+            color: #4b4b4b;
+            font-size: 16px;
+        }
+
+        .continue-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #58cc02;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 0 #58a700;
+            text-transform: uppercase;
+        }
+
+        .continue-button:hover {
+            background-color: #61e002;
+        }
+
+        .streak-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #58cc02;
+            border-radius: 12px;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .streak-icon {
+            width: 30px;
+            height: 30px;
+            filter: invert(1);
+        }
+    </style>
+</head>
+<body>
+    <a href="#" class="close-button">×</a>
+    <div class="streak-button">
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PHBhdGggZD0iTTEyIDNhMSAxIDAgMCAxIC44OS41OGwyLjY5IDYuMjYgNi41My40OCBhMSAxIDAgMCAxIC41NiAxLjczbC01LjAyIDQuMzUgMS41NCA2LjQ3YTEgMSAwIDAgMS0xLjQ3IDEuMDdMMTIgMjAuMDVsLTUuNzIgMy44N2ExIDEgMCAwIDEtMS40Ny0xLjA3bDEuNTQtNi40Ny01LjAyLTQuMzVhMSAxIDAgMCAxIC41Ni0xLjczbDYuNTMtLjQ4IDIuNjktNi4yNkExIDEgMCAwIDEgMTIgM3oiLz48L3N2Zz4=" alt="Streak" class="streak-icon">
+    </div>
+    <div class="container">
+        <div class="chat-container">
+            <div class="mascot-message">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MCA0MCI+PGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiM1OGNjMDIiLz48cGF0aCBkPSJNMjAgOGE4IDggMCAxIDAgMCAxNiA4IDggMCAwIDAgMC0xNnptMCAyYTYgNiAwIDEgMSAwIDEyIDYgNiAwIDAgMSAwLTEyeiIgZmlsbD0iI2ZmZiIvPjxjaXJjbGUgY3g9IjE2IiBjeT0iMTYiIHI9IjIiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIyNCIgY3k9IjE2IiByPSIyIiBmaWxsPSIjZmZmIi8+PHBhdGggZD0iTTE1IDIyaDEwYTUgNSAwIDAgMS01IDUgNSA1IDAgMCAxLTUtNXoiIGZpbGw9IiNmZmYiLz48L3N2Zz4=" alt="Duo" class="mascot-img">
+                <div class="message-bubble">
+                    Okay, we'll build on what you know!
+                </div>
+            </div>
+        </div>
+        <div class="options-container">
+            <div class="option">
+                <div class="option-icon">📊</div>
+                <div class="option-text">I'm new to Spanish</div>
+            </div>
+            <div class="option selected">
+                <div class="option-icon">📊</div>
+                <div class="option-text">I know some common words</div>
+            </div>
+            <div class="option">
+                <div class="option-icon">📊</div>
+                <div class="option-text">I can have basic conversations</div>
+            </div>
+            <div class="option">
+                <div class="option-icon">📊</div>
+                <div class="option-text">I can talk about various topics</div>
+            </div>
+        </div>
+    </div>
+    <button class="continue-button">Continue</button>
+</body>
+</html>
